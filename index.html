@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaração Sincera 💖</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/833/833472.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: #FF6FB1; /* Fundo rosa claro */
+            color: #D63384;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.4;
+            z-index: -1;
+        }
+        .envelope {
+            width: 250px;
+            height: 180px;
+            background: #FF6B81;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .envelope:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+        .envelope::after {
+            content: "📩 Clique para abrir a carta";
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .letter {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 80%;
+            max-width: 500px;
+            background: #fff4f1;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 10;
+            opacity: 0;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        }
+        .letter.open {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        .btn-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #d63384;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .letter p {
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        .letter p:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+        .letter p:nth-child(even) {
+            animation-delay: 1s;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes growFlowers {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .flower {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: growFlowers 1s forwards;
+            animation-delay: 1.5s;
+        }
+        .falling-heart {
+            position: absolute;
+            top: -50px;
+            font-size: 1.8rem;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Animação para os pontos brancos no fundo */
+        .dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .dot {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: fadeInOut 2s infinite ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.2; transform: scale(0.8); }
+        }
+
+        /* Título com animação colorWave para alternar entre rosa e branco */
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #FFC0CB, #FFFFFF, #FFC0CB);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <h1>Uma Carta Especial para Isa💖 </h1>
+    <div class="envelope" onclick="abrirCarta()"></div>
+    <div class="letter" id="carta">
+        <button class="btn-close" onclick="fecharCarta()">✖</button>
+        <h2 style="color: #D63384;">Querida Isa, A Mais Bella💖 </h2>
+        <p>💖 Nos meus pensamentos, vejo teu sorriso brilhar 💖</p>
+        <p>🌸 Como a lua que brilha no céu, insiste em me guiar 🌸</p>
+        <p>💖 Seus olhos como estrelas, me fazem sonhar 💖</p>
+        <p>🌸 Em cada batida do coração, a certeza de te amar 🌸</p>
+        <p>💖 Teu abraço é o abrigo onde encontro paz 💖</p>
+        <p>🌸 Teu olhar é o farol que me orienta para a felicidade 🌸</p>
+        <p>💖 Amar você é meu maior presente 💖</p>
+        <p>🌸 Um amor eterno, que jamais se apaga, sempre presente 🌸</p>
+        <p>💖🌸 Espero que me aceite, mesmo sendo todo errado 💖🌸</p>
+        <p>😴 Preguiçoso e sempre cansado, 😴</p>
+        <p>💨 Mas nunca cansado para andar ou correr para teu lado 💨</p>
+        <p>🌺 Sempre tentando te animar ou trazer seu agrado 🌺</p>
+    </div>
+
+    <!-- Elementos de pontos brancos -->
+    <div class="dots" id="dots"></div>
+
+    <script>
+        function abrirCarta() {
+            const carta = document.getElementById("carta");
+            carta.style.display = "block";
+            setTimeout(() => {
+                carta.classList.add("open");
+            }, 10);
+        }
+
+        function fecharCarta() {
+            const carta = document.getElementById("carta");
+            carta.classList.remove("open");
+            setTimeout(() => {
+                carta.style.display = "none";
+            }, 500);
+        }
+
+        function createFallingHearts() {
+            const emojis = ['💖', '💘', '💝', '💗', '💞', '🤍', '🌸', '🌺', '🌷'];
+            setInterval(() => {
+                if (!document.getElementById("carta").classList.contains("open")) return;
+                let heart = document.createElement("div");
+                heart.className = "falling-heart";
+                heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000); // Aumentando a frequência dos corações caindo
+            }, 300);
+        }
+
+        function createFlowers() {
+            let flower = document.createElement("div");
+            flower.className = "flower";
+            flower.innerHTML = "🌸";
+            document.body.appendChild(flower);
+            setTimeout(() => {
+                flower.remove();
+            }, 4000);
+        }
+
+        function createDots() {
+            const dotsContainer = document.getElementById("dots");
+
+            setInterval(() => {
+                let dot = document.createElement("div");
+                dot.classList.add("dot");
+                dot.style.width = Math.random() * 12 + "px"; // Largura aleatória maior
+                dot.style.height = dot.style.width; // Torna o ponto circular
+                dot.style.left = Math.random() * 100 + "vw"; // Posição horizontal aleatória
+                dot.style.top = Math.random() * 100 + "vh"; // Posição vertical aleatória
+                dot.style.animationDuration = (Math.random() * 1 + 1) + "s"; // Variação na velocidade de fade
+                dotsContainer.appendChild(dot);
+                setTimeout(() => {
+                    dot.remove();
+                }, 2000); // Duração do ponto antes de desaparecer
+            }, 100); // Aumentando a frequência dos pontos brancos
+        }
+
+        createFallingHearts();
+        createFlowers();
+        createDots();
+    </script>
+</body>
+</html>
